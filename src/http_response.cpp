@@ -1,0 +1,12 @@
+namespace http {
+
+    
+
+    class HttpReponse {
+
+
+
+
+    };
+
+}
