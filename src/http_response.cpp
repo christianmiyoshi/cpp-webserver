@@ -6,16 +6,22 @@ namespace http {
         this->headers[name] = value;
     }
 
+    int HttpResponse::statusInt() const {
+        return static_cast<int>(status);
+    }
+
     std::string HttpResponse::output() const {
         std::ostringstream ss;
-
-        ss << "HTTP/1.1 200 OK\n";
+        ss << "HTTP/1.1 " << std::to_string(statusInt()) << " OK\n";
 
         for (auto& header : headers) {  // It's better to use reference here to avoid copying
             ss << header.first << ": " << header.second << "\n";
         }        
-        ss << "Content-Type: text/html\nContent-Length: " << body.size() << "\n\n"
-           << body;
+        ss << "Content-Type: text/html\nContent-Length: " << body.size();
+
+        if (body.size() > 0) {
+            ss << "\n\n" << body;
+        }           
         return ss.str();
     }
 }
