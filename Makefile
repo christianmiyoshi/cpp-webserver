@@ -8,7 +8,7 @@ OBJ = $(SRC:src/%.cpp=$(OBJ_DIR)/%.o)
 TARGET = build/main.out
 
 # Coletar automaticamente todos os arquivos de teste na pasta tests/
-TEST_SRC = $(wildcard tests/*.cpp)
+TEST_SRC = $(wildcard tests/*.cpp) $(filter-out src/main.cpp, $(wildcard src/*.cpp))
 TEST_OBJ = $(TEST_SRC:tests/%.cpp=$(OBJ_DIR)/tests/%.o)
 TEST_TARGET = build/test.out
 
@@ -35,5 +35,5 @@ $(OBJ_DIR)/tests/%.o: tests/%.cpp
 
 # Criar o executável de testes com debug ativado
 test: $(TEST_OBJ)
-	$(CXX) $(TEST_OBJ) -o $(TEST_TARGET) -lgtest -lgtest_main -pthread $(DEBUG_FLAGS)
+	$(CXX) ${CXXFLAGS} $(TEST_OBJ) -o $(TEST_TARGET) -lgtest -lgtest_main -pthread $(DEBUG_FLAGS)
 	./$(TEST_TARGET)
