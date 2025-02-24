@@ -8,7 +8,7 @@
 namespace http {
     class HttpResponse  {
         public:
-            HttpResponse(HttpStatusCode status) : status(status) {};
+            HttpResponse(HttpStatusCode status, std::string body = "") : status(status), body(body) {};
             void addHeader(std::string name, std::string value);
             std::string output() const;
             int statusInt() const;

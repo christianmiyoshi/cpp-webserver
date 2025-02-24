@@ -17,6 +17,9 @@ DEBUG_FLAGS = -g
 
 all: $(TARGET)
 
+run:
+	./$(TARGET)
+
 # Regra para compilar todos os arquivos da pasta src/
 $(OBJ_DIR)/%.o: src/%.cpp
 	mkdir -p $(OBJ_DIR)

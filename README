@@ -1,5 +1,7 @@
 HTTP Webserver 
 
+Simple webserver in C++. Code based on https://github.com/OsasAzamegbe/http-server
+
 Google test
 git clone https://github.com/google/googletest.git -b v1.16.0
 cd googletest

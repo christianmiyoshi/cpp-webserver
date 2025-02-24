@@ -3,6 +3,8 @@
 #include <iostream>
 #include <sstream>
 #include <unistd.h>
+#include <http_response.h>
+#include <http_constants.h>
 
 namespace
 {
@@ -117,12 +119,10 @@ namespace http
 
     std::string TcpServer::buildResponse()
     {
-        std::string htmlFile = "<!DOCTYPE html><html lang=\"en\"><body><h1> HOME </h1><p> Hello from your Server :) </p></body></html>";
-        std::ostringstream ss;
-        ss << "HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Length: " << htmlFile.size() << "\n\n"
-           << htmlFile;
-
-        return ss.str();
+        std::string htmlFile = "<!DOCTYPE html><html lang=\"en\"><body><h1> G++ </h1><p> Hello from your Server :) </p></body></html>";        
+        http::HttpResponse response(HttpStatusCode::Ok, htmlFile);
+        return response.output();
+         
     }
 
     void TcpServer::sendResponse()
