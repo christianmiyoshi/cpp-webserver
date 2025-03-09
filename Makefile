@@ -1,5 +1,5 @@
-CXX = g++-10
-CXXFLAGS = -Iinclude -Wall -Wextra -std=c++20
+CXX = g++
+CXXFLAGS = -Iinclude -Wall -Wextra -std=c++2a
 
 SRC = $(wildcard src/*.cpp)  # Captura automaticamente todos os arquivos .cpp dentro de src/
 OBJ_DIR = build/obj
